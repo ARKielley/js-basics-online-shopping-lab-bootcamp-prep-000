@@ -9,20 +9,62 @@ function setCart(c) {
   return cart;
 }
 
+function randomPrice() {
+  let int = Math.floor(Math.random() * 100);
+  return int;
+}
+
 function addToCart(item) {
- // write your code here
+  let rand = randomPrice();
+  let name = {itemName: item};
+  let price = {itemPrice: rand};
+  let expandedItem = Object.assign(name, price);
+  cart.push(expandedItem);
+return `${expandedItem.itemName} has been added to your cart.`;
 }
 
 function viewCart() {
-  // write your code here
+  let msg = "In your cart, you have ";
+  if (cart.length === 0) {
+    return "Your shopping cart is empty.";
+  } else {
+    for (let i = 0; cart.length - i > 0; i++) {
+      msg += `${cart[i].itemName} at $${cart[i].itemPrice}${cart.length - i > 2 ? `, ` : ``}${cart.length - i === 2 ? `, and ` : ``}${cart.length - i < 2 ? `.` : ``}`;
+    }
+    return msg;
+  }
 }
 
 function total() {
-  // write your code here
+  let priceIteration = 0;
+  for (let i = 0; cart.length - i > 0; i++) {
+    priceIteration += cart[i].itemPrice;
+  }
+  return priceIteration;
 }
 
+//function cartSplice(itemIndex) {
+//  cart.splice(itemIndex, 0);
+//  return cart;
+//}
+
 function removeFromCart(item) {
-  // write your code here
+  let lengthSearch = cart.length - 1;
+  //for (let i = cart.length - 1; i > -1; i--) {
+  //  if (cart[i])
+  //}
+  let found = false;
+  while (lengthSearch > -1) {
+    if (cart[lengthSearch].itemName === item) {
+      cartSplice(lengthSearch);
+      found = true;
+    } else {
+      lengthSearch--;
+    }
+  }
+  if (found === false) {
+    return "That item is not in your cart.";
+  }
 }
 
 function placeOrder(cardNumber) {
