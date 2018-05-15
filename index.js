@@ -57,7 +57,7 @@ function removeFromCart(item) {
   while (lengthSearch > -1) {
     if (cart[lengthSearch].itemName === item) {
       cart.splice(lengthSearch, 1);
-      found = true;
+      return cart;
     } else {
       lengthSearch--;
     }
