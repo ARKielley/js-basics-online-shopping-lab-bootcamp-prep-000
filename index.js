@@ -46,7 +46,6 @@ function total() {
 
 function removeFromCart(item) {
   let lengthSearch = cart.length - 1;
-  let found = false;
   while (lengthSearch > -1) {
     if (cart[lengthSearch].itemName === item) {
       cart.splice(lengthSearch, 1);
@@ -55,8 +54,7 @@ function removeFromCart(item) {
       lengthSearch--;
     }
   }
-return "That item is not in your cart.";
-  
+  return "That item is not in your cart.";
 }
 
 function placeOrder(cardNumber) {
