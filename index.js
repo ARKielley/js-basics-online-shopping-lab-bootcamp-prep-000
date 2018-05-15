@@ -58,7 +58,7 @@ function removeFromCart(item) {
 }
 
 function placeOrder(cardNumber) {
-  if(cardNumber === null) {
+  if(cardNumber === NaN) {
     return "Sorry, we do";
   } else {
     return cardNumber;
